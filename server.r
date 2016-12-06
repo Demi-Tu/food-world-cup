@@ -7,6 +7,9 @@ setwd("~/INFO-201/food-world-cup/")
 source("./scripts/wrangle-data.R")
 food <- read.csv("data/food-world-cup-data.csv")
 
+food$Gender[food$Gender == ""] <- NA
+food <- na.omit(food)
+
 ratings <- wrangleData(food)
 
 # THIS CODE DOESN'T WORK-- FIX LATER

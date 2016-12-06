@@ -11,5 +11,7 @@ wrangleData <- function(df) {
   tidy <- df %>%
     gather("country", "rating", 4:43)
   
+  tidy$rating <- type.convert(tidy$rating, na.strings = "N/A")
+  
   return(tidy)
 }
