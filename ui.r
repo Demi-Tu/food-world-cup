@@ -33,6 +33,9 @@ shinyUI(
                                         "$25,000 - $49,999", 
                                         "$50,000 - $99,999")
                            )
+      ),
+      mainPanel(
+        plotlyOutput('world.map')
       )
     )
   )
