@@ -12,6 +12,7 @@ combineCols <- function(df) {
     gather("country", "rating", 4:43)
   
   tidy$rating <- type.convert(tidy$rating, na.strings = "N/A")
+  setwd("~/INFO-201/food-world-cup/")
   
   return(tidy)
 }
