@@ -18,13 +18,7 @@ ratings.summ <- ratings %>%
   summarise(mean_rating = mean(rating, na.rm = TRUE))
 
 shinyServer(function(input, output) {
-  df <- ratings.summ
-  
-  # # Show only selected gender
-  #  if (input$gender != "Both") {
-  #   df %>% filter(Gender == input$gender)
-  # }
-  # 
+
   # # Show only selected age groups
   # df %>% filter(Age %in% input$age)
   # 
@@ -32,6 +26,14 @@ shinyServer(function(input, output) {
   # df %>% filter(Household.Income %in% input$income)
 
   output$world.map <- renderPlotly({
+    df <- ratings.summ
+    
+    # Show only selected gender
+    if (input$gender != "Both") {
+      df <- df %>% 
+        filter(Gender == input$gender)
+    }
+    
     # light grey boundaries
     l <- list(color = toRGB("grey"), width = 0.5)
     

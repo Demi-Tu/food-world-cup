@@ -9,8 +9,7 @@ shinyUI(
       sidebarPanel(
         radioButtons("gender",
                      label = h4("Select gender"),
-                     choices = list("Both" = "Both", "Female" = "Female", "Male" = "Male"),
-                     selected = "Both"
+                     choices = list("Combined" = "Both", "Only female" = "Female", "Only male" = "Male")
                      )
       #   checkboxGroupInput("age", 
       #                      label = h4("Select age group"),
