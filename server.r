@@ -17,11 +17,17 @@ ratings.summ <- ratings %>%
 
 shinyServer(function(input, output) {
   df <- food
- 
+  
+  # Show only selected gender
    if (input$gender != "Both") {
-    df <- food %>%
-      filter(Gender == input$gender)
+    df %>% filter(Gender == input$gender)
   }
+  
+  # Show only selected age groups
+  df %>% filter(Age %in% input$age)
+  
+  # Show only selected income brackets
+  df %>% filter(Household.Income %in% input$income)
   
   # Placeholder line of code, I don't think it works
   output$value <- renderPrint({input$gender})
