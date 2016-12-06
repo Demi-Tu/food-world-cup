@@ -1,5 +1,4 @@
-# "People who love to eat are always the best people"
-## - Julia Child
+# "People who love to eat are always the best people" - Julia Child
 
 Are you a food fanatic? Ever wondered which cuisines are most popular in the world? You've come to the right place.
 
