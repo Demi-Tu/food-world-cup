@@ -11,7 +11,7 @@ shinyUI(
                            label = h4("Select gender"),
                            choices = list("Female" = "Female", "Male" = "Male"),
                            selected = c("Female", "Male")
-                     ),
+                           ),
         checkboxGroupInput("age",
                            label = h4("Select age group"),
                            choices = list("18-29 years" = "18-29",
