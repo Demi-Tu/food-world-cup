@@ -10,15 +10,15 @@ shinyUI(
         radioButtons("gender",
                      label = h4("Select gender"),
                      choices = list("Combined" = "Both", "Only female" = "Female", "Only male" = "Male")
-                     )
-      #   checkboxGroupInput("age", 
-      #                      label = h4("Select age group"),
-      #                      choices = list("18-29 years" = "18-29",
-      #                                     "30-44 years" = "30-44",
-      #                                     "45-60 years" = "45-60",
-      #                                     "60 and older" = "> 60"),
-      #                      selected = c("18-29", "33-44", "45-60", "> 60")
-      #                      ),
+                     ),
+        checkboxGroupInput("age",
+                           label = h4("Select age group"),
+                           choices = list("18-29 years" = "18-29",
+                                          "30-44 years" = "30-44",
+                                          "45-60 years" = "45-60",
+                                          "60 and older" = "> 60"),
+                           selected = c("18-29", "30-44", "45-60", "> 60")
+                           )
       #   checkboxGroupInput("income",
       #                      label= h4("Select income bracket"),
       #                      choices = list("Less than 25K" = "$0 - $24,999",
