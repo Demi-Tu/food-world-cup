@@ -1,6 +1,4 @@
 # server.r 
-
-#hey a new comment wow
 library(dplyr)
 library(plotly)
 library(shiny)
@@ -12,27 +10,15 @@ food <- read.csv("data/food-world-cup-data.csv")
 food <- makePretty(food)
 ratings <- read.csv("data/food-world-cup-combined-cols.csv")
 
-# Create summary table of average ratings
-ratings.summ <- ratings %>%
-  group_by(country, code, Gender, Age) %>%
-  summarise(mean_rating = mean(rating, na.rm = TRUE))
-
 shinyServer(function(input, output) {
-  # # Show only selected income brackets
-  # df %>% filter(Household.Income %in% input$income)
-
+  
+  # Creates world chloropleth map
   output$world.map <- renderPlotly({
-    df <- ratings.summ
-    
-    # Show only selected gender
-    if (input$gender != "Both") {
-      df <- df %>% 
-        filter(Gender == input$gender)
-    }
-    
-    # Show only selected age groups
-    df <- df %>% filter(Age %in% input$age)
-    
+
+    # Show only selected age groups and income brackets
+    df <- ratings.summ %>% filter(Age %in% input$age,
+                        Gender %in% input$gender,
+                        Household.Income %in% input$income)
     
     # light grey boundaries
     l <- list(color = toRGB("grey"), width = 0.5)
