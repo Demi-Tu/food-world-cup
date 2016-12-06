@@ -5,16 +5,10 @@ library(shiny)
 
 setwd("~/INFO-201/food-world-cup/")
 source("./scripts/wrangle-data.R")
+
 food <- read.csv("data/food-world-cup-data.csv")
-
-food$Gender[food$Gender == ""] <- NA
-food <- na.omit(food)
-
-food$Age[food$Age == ""] <- NA
-food$Household.Income[food$Household.Income == ""] <- NA
-food$Education[food$Education == ""] <- NA
-
-ratings <- wrangleData(food)
+food <- makePretty(food)
+ratings <- combineCols(food)
 
 # Create summary table of average ratings
 ratings.summ <- ratings %>%

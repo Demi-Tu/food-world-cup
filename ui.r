@@ -9,7 +9,7 @@ shinyUI(
       sidebarPanel(
         radioButtons("gender", label = h4("Select gender"),
                      choices = list("Both" = "Both", "Female" = "Female", "Male" = "Male"), 
-                     selected = 1
+                     selected = "Both"
                      )
       )
     )
