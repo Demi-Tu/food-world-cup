@@ -14,7 +14,7 @@ ratings <- read.csv("data/food-world-cup-combined-cols.csv")
 
 # Create summary table of average ratings
 ratings.summ <- ratings %>%
-  group_by(country, code, Gender, Household.Income, Age, Education) %>%
+  group_by(country, code, Gender) %>%
   summarise(mean_rating = mean(rating, na.rm = TRUE))
 
 shinyServer(function(input, output) {
@@ -37,8 +37,8 @@ shinyServer(function(input, output) {
     
     # specify map projection/options
     g <- list(
-      showframe = FALSE,
-      showcoastlines = FALSE,
+      showframe = TRUE,
+      showcoastlines = TRUE,
       projection = list(type = 'Mercator')
     )
     
