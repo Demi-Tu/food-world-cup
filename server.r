@@ -10,7 +10,11 @@ food <- read.csv("data/food-world-cup-data.csv")
 food <- makePretty(food)
 ratings <- read.csv("data/food-world-cup-combined-cols.csv")
 ratings.summ <- ratings %>%
-  group_by(country, code, Gender, Age, Household.Income) %>%
+  group_by(country, 
+           code, 
+           Gender, 
+           Age,
+           Household.Income) %>%
   summarize(mean_rating = mean(rating, na.rm = TRUE))
 
 shinyServer(function(input, output) {

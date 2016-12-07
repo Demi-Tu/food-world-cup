@@ -38,7 +38,25 @@ shinyUI(
                            )
       ),
       mainPanel(
-        plotlyOutput('world.map')
+        plotlyOutput('world.map'),
+        h3("Trends"),
+        p("As you fiddle with the preferences of different demographics, you will notice that",
+          strong("Italy"), 
+          "has the most consistently highly-rated cuisine. Who doesn't like pasta and pizza?"),
+        br(),
+        p("Another interesting trend is that the older crowd rates",
+          strong("American"),
+          "cuisine higher on average (> 4) than the younger crowd does (< 4).",
+          "The 45+ crowd also ranks French, Mexican, and Chinese food in their top 5 favorite cuisines,",
+          "whereas the those same cuisines do not make it into the top 7 of the younger generation."
+        ),
+        br(),
+        p("Of the genders,",
+          strong("females"),
+          "on average tend to have higher ratings of all cuisines."),
+        br(),
+        p("Between income brackets, there doesn't seem to be a huge difference in cuisine preferences."),
+        strong("What trends can you find?")
       )
     )
   )
