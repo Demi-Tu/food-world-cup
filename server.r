@@ -3,8 +3,10 @@ library(dplyr)
 library(plotly)
 library(shiny)
 
-setwd("~/INFO-201/food-world-cup/")
+setwd("~/food-world-cup")
 source("./scripts/wrangle-data.R")
+
+#Anushna's data/work
 
 food <- read.csv("data/food-world-cup-data.csv")
 food <- makePretty(food)
@@ -17,21 +19,28 @@ ratings.summ <- ratings %>%
            Household.Income) %>%
   summarize(mean_rating = mean(rating, na.rm = TRUE))
 
+#Meghan's data/work
+
+rating.distributions <- read.csv("data/food-world-cup-rating-instances.csv")
+View(rating.distributions)
+
+#shinyServer
+
 shinyServer(function(input, output) {
   df <- ratings.summ
   
-  # Creates world chloropleth map
+  #Creates world chloropleth map
   output$world.map <- renderPlotly({
 
-    # Show only selected age groups and income brackets
+    ##Show only selected age groups and income brackets
     df <- ratings.summ %>% filter(Gender %in% input$gender,
                                   Age %in% input$age,
                                   Household.Income %in% input$income)
     
-    # light grey boundaries
+    #Light grey boundaries
     l <- list(color = toRGB("grey"), width = 0.5)
     
-    # specify map projection/options
+    #Specify map projection/options
     g <- list(
       showframe = TRUE,
       showcoastlines = TRUE,
@@ -49,5 +58,14 @@ shinyServer(function(input, output) {
         geo = g
       )
     return (p)
+  })
+  
+  #Display rating.dist barchart
+  output$rating.dist <- renderPlot({
+    
+    barplot(rating.distributions[,input$country], 
+            main=input$country,
+            ylab="Frequency",
+            xlab="Rating")
   })
 })
