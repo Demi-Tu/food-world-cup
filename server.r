@@ -69,4 +69,19 @@ shinyServer(function(input, output) {
           )
     )
   })
+  
+  questionsdf <- read.csv("data/food-world-cup-questions.csv")
+  
+  output$barchart <- renderPlot({
+    
+    # Render a barplot
+    return(barplot(questionsdf[,input$qs], 
+                   main=input$qs,
+                   ylab="Number of Respondents",
+                   xlab="Response to Question",
+                   names.arg = c('Not Much', 'Some', 'A Lot'),
+                   col = 'purple'
+                  )
+    )
+  })
 })

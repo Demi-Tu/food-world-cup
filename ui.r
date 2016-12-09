@@ -86,7 +86,23 @@ shinyUI(
                         
                       )
              ),
-             tabPanel("Respondent Demographics"
+             tabPanel("Additional Survey Questions",
+                      sidebarLayout(      
+                        
+                        # Define the sidebar with one input
+                        sidebarPanel(
+                          p('Here are additional questions that respondents answered in the survey.'),
+                          p('It seems that not a lot of people have much knowledge about different cuisines around the world, but would love to learn more!'),
+                          selectInput("qs", "Survey Questions", 
+                                      choices=colnames(questions.df))
+                        ),
+                        
+                        # Create a spot for the barplot
+                        mainPanel(
+                          plotOutput("barchart")  
+                        )
+                        
+                      )
              ),
              tabPanel("About Us",
                       fluidRow(
