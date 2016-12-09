@@ -19,11 +19,6 @@ ratings.summ <- ratings %>%
            Household.Income) %>%
   summarize(mean_rating = mean(rating, na.rm = TRUE))
 
-#Meghan's data/work
-
-rating.distributions <- read.csv("data/food-world-cup-rating-instances.csv")
-View(rating.distributions)
-
 #shinyServer
 
 shinyServer(function(input, output) {
@@ -60,12 +55,18 @@ shinyServer(function(input, output) {
     return (p)
   })
   
-  #Display rating.dist barchart
+  rd <- read.csv("data/food-world-cup-rating-instances.csv")
+  
   output$rating.dist <- renderPlot({
     
-    barplot(rating.distributions[,input$country], 
-            main=input$country,
-            ylab="Frequency",
-            xlab="Rating")
+    # Render a barplot
+    return(barplot(rd[,input$country], 
+                   main=input$country,
+                   ylab="Number of Respondents",
+                   xlab="Rating",
+                   names.arg = c('1', '2', '3', '4', '5'),
+                   col = 'pink'
+          )
+    )
   })
 })
