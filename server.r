@@ -3,7 +3,7 @@ library(dplyr)
 library(plotly)
 library(shiny)
 
-setwd("~/food-world-cup")
+#setwd("~/food-world-cup")
 source("./scripts/wrangle-data.R")
 
 #Anushna's data/work
@@ -22,6 +22,9 @@ ratings.summ <- ratings %>%
 #shinyServer
 
 shinyServer(function(input, output) {
+  
+  #Anushna's Tab
+  
   df <- ratings.summ
   
   #Creates world chloropleth map
@@ -55,6 +58,8 @@ shinyServer(function(input, output) {
     return (p)
   })
   
+  #Meghan's Tab
+  
   rd <- read.csv("data/food-world-cup-rating-instances.csv")
   
   output$rating.dist <- renderPlot({
@@ -69,6 +74,8 @@ shinyServer(function(input, output) {
           )
     )
   })
+  
+  #Demi's Tab
   
   questionsdf <- read.csv("data/food-world-cup-questions.csv")
   
